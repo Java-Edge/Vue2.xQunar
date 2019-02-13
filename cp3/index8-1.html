@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的列表渲染</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--    <div v-for="item of userInfo">-->
+    <!--        {{item}}-->
+    <!--    </div>-->
+    <!--    <div v-for="(item, index) of userInfo">-->
+    <!--        {{item}} -&#45;&#45; {{index}}-->
+    <!--    </div>-->
+
+
+<!--    <div v-for="(item, index) of userInfo"-->
+<!--         :key="item.id">-->
+<!--        <div>-->
+<!--            {{item.text}} -&#45;&#45; {{index}}-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; 现在还想循环 span 标签 &ndash;&gt;-->
+<!--        <span>-->
+<!--            {{item.text}}-->
+<!--        </span>-->
+<!--    </div>-->
+
+<!--    可就多了一个 div 标签呀，我强迫症啊，就不想多加一层标签元素。-->
+    <template v-for="(item, index) of userInfo"
+         :key="item.id">
+        <div>
+            {{item.text}} --- {{index}}
+        </div>
+
+        <!-- 现在还想循环 span 标签 -->
+        <span>
+            {{item.text}}
+        </span>
+    </template>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            userInfo: [{
+                id: "Java",
+                text: "18"
+            }, {
+                id: "Edge",
+                text: "19"
+            }, {
+                id: "公众号",
+                text: "20"
+            }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

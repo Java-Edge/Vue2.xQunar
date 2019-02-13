@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部组件</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="todoValue"/>
+    <button @click="submit">提交</button>
+    <ul>
+        <todo-item v-for="item of list"
+                   :item="item">
+        </todo-item>
+    </ul>
+</div>
+
+<script>
+    // 局部组件
+    var TodoItem = {
+        props: ["item"],
+        template: '<li>{{item}}</li>'
+    }
+    var app = new Vue({
+        el: '#app',
+        components:{
+            TodoItem
+        },
+        data: {
+            list: []
+        },
+        methods: {
+            submit: function () {
+                this.list.push(this.todoValue)
+                this.todoValue = ''
+            }
+        }
+    })
+</script>
+</body>
+</html>

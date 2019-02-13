@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src='vue.js'></script>
+</head>
+<body>
+<!-- MVVM的 View 层-->
+<div id="app">
+    <input type="text" v-model="inputValue"/>
+    <button v-on:click="handleBtnClick">提交</button>
+    <ul>
+        <li v-for="item in list">{{item}}</li>
+    </ul>
+</div>
+
+<script>
+    // MVVM的 Model 层我们都是在开发 M 层，修改之后，V 层自动就会变化这背后就是VM 层做的(Vue自带实现)
+	// 这就让我们只需关注 M 层开发
+    var app = new Vue({
+        el: '#app',
+        data: {
+            list: [],
+            inputValue: ''
+        },
+        methods: {
+            handleBtnClick: function () {
+                this.list.push(this.inputValue)
+                this.inputValue = ''
+            }
+        }
+    })
+</script>
+</body>
+</html>

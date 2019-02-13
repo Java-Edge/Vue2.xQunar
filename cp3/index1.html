@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例</title>
+    <script src='../vue.js'></script>
+</head>
+<body>
+
+<div id="root">
+    <!-- v-on可简写为@ -->
+    <div @click="handleClick">
+        {{message}}
+    </div>
+    <!-- 使用item组件 -->
+    <item></item>
+</div>
+
+<script>
+
+    Vue.component('item', {
+        template: '<div>hello item</div>'
+    })
+
+    /**
+     * 每个 Vue 应用都是通过用 Vue 函数创建一个新的 Vue 实例开始
+     */
+    var vm = new Vue({
+        /**
+         * el: '#root'表示Vue实例将挂载到id为"root"的HTML元素
+         * 这个HTML元素可以是任何元素 如div、section
+         * Vue实例挂载到该元素后，Vue实例就可以操作该元素及其子元素，以及响应用户的交互行为
+         */
+        el: '#root',
+        /**
+         * 当一个 Vue 实例被创建时，它将 data 对象中的所有的 property 加入到 Vue 的响应式系统中
+         * 当这些 property 的值发生改变时，视图将会产生“响应”，即匹配更新为新的值。
+         * 只有当实例被创建时就已经存在于 data 中的 property 才是响应式的
+         */
+        data: {
+            message: 'hello world'
+        },
+        // 在 `methods` 对象中定义方法
+        methods: {
+            handleClick: function () {
+                alert("hello")
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

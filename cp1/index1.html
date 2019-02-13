@@ -1,0 +1,26 @@
+<!--Vue.js实现打印-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaEdge</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app1">
+    {{content}}
+</div>
+
+<script>
+    // 每个 Vue 应用都是通过用 Vue 函数创建一个新的 Vue 实例 开始
+    var app1 = new Vue({
+        // 接管数据的区域范围
+        el: "#app1",
+        // 数据内容
+        data: {
+            content: 'JavaEdge',
+        }
+    })
+</script>
+</body>
+</html>

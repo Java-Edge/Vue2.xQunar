@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子组件传值给父组件</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <div>
+        <input type="text" v-model="todoValue"/>
+        <button @click="handleBtnClick">提交</button>
+    </div>
+    <ul>
+        <!-- 通过 v-bind，将父组件的 item 值传给子组件 -->
+        <!-- 在父组件里创建子组件的同时，就能监听子组件发出的事件
+                一旦子组件被触发了，就会执行父组件的 handleItemDelete -->
+        <todo-item :content="item"
+                   :index="index"
+                   v-for="(item, index) in list"
+                   @delete="handleItemDelete">
+        </todo-item>
+    </ul>
+</div>
+
+<script>
+
+    // 定义了一个名为TodoItem的组件，new Vue的子组件
+    // 在代码中，通过使用</todo-item>标签，用到了该子组件
+    var TodoItem = {
+        // 该组件接受内容和索引作为属性
+        // 并在列表中显示
+        props: ['content', 'index'],
+        // v-on:click 简写成 @click
+        template: "<li @click='handleItemClick'>{{content}}</li>",
+        methods: {
+            handleItemClick: function () {
+                // alert("JavaEdge 666")
+                // 点击子组件时，子组件对外发出事件
+                // this.$emit("delete")
+                // 点击子组件时，子组件对外发出事件，还顺带一个参数也发出去，那么监听事件的handleItemDelete就能拿到 index
+                this.$emit("delete",this.index)
+            }
+        }
+    }
+
+    // new Vue属于全局组件
+    // 在本 demo 中，也属于最外层的父组件
+    // 整个root div 区域也就是该父组件的模板
+    // 定义了一个名为app的Vue实例
+    var app = new Vue({
+        el: "#root",
+        components: {
+            TodoItem: TodoItem
+        },
+        // 该实例具有
+        data: {
+            // 一个todoValue数据属性
+            todoValue: "",
+            // 一个list数组属性
+            list: []
+        },
+        methods: {
+            // 当用户点击提交按钮时
+            handleBtnClick: function () {
+                // 应用程序将todoValue添加到list数组
+                this.list.push(this.todoValue)
+                // 并将todoValue重置为空字符串
+                this.todoValue = ""
+            },
+            handleItemDelete: function (index) {
+                // alert("delete")
+                // this.list = [];
+                // alert(index)
+                /**
+                 * 这段代码的作用是从列表中删除指定索引的元素：
+                 * 1. list是一个列表对象。
+                 * 2. splice()是一个JavaScript数组方法，它用于在数组中添加或删除元素
+                 *      第一个参数：要删除或添加元素的起始索引
+                 *      第二个参数：要删除的元素数量
+                 * 3. 因此，这行代码将从list列表中删除指定索引的元素
+                 */
+                this.list.splice(index, 1)
+            }
+        }
+    })
+</script>
+</body>
+</html>

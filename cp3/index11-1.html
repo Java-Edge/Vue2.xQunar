@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的表单绑定</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <!--    和 value 变量进行双向绑定（即变化会互相影响）-->
+<!--    <input v-model="value"/>-->
+<!--    <textarea v-model="value" rows="10" cols="50"></textarea>-->
+    <input type="checkbox" v-model="value"></input>
+    {{value}}
+</div>
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            value: ""
+        }
+    })
+</script>
+</body>
+</html>

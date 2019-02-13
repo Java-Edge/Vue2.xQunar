@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的样式绑定</title>
+    <script src="../vue.js"></script>
+    <style>
+        .activated {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div :class="{activated: isActivated}"
+         @click="handleDivClick">
+        Hello world
+    </div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            isActivated: false
+        },
+        methods: {
+            handleDivClick: function () {
+                // 点击变成红色
+                // this.isActivated = true;
+                // 再点击褪色
+                this.isActivated = !this.isActivated;
+            }
+        }
+    })
+</script>
+</body>
+</html>

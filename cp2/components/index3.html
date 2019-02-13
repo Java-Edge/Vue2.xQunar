@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <div>
+        <input type="text" v-model="todoValue"/>
+        <button @click="handleBtnClick">提交</button>
+    </div>
+    <ul>
+<!--        通过 v-bind，将父组件的 item 值传给子组件了-->
+        <todo-item :content="item"
+                   :index="index"
+                   v-for="(item, index) in list"
+                   @delete="handleItemDelete">
+        </todo-item>
+    </ul>
+</div>
+
+<script>
+
+    // 定义了一个名为TodoItem的组件
+    // new Vue的子组件
+    // 在代码中，通过使用</todo-item>标签，用到了该子组件
+    var TodoItem = {
+        // 该组件接受内容和索引作为属性
+        // 并在列表中显示
+        props: ['content', 'index'],
+        template: "<li @click='handleItemClick'>{{content}}</li>",
+        methods: {
+            handleItemClick: function () {
+                this.$emit("delete", this.index);
+            }
+        }
+    }
+
+    // new Vue属于全局组件
+    // 在本 demo 中，也属于最外层的父组件
+    // 整个root div 区域也就是该父组件的模板
+    // 定义了一个名为app的Vue实例
+    var app = new Vue({
+        el: "#root",
+        components: {
+            TodoItem: TodoItem
+        },
+        // 该实例具有
+        data: {
+            // 一个todoValue数据属性
+            todoValue: "",
+            // 一个list数组属性
+            list: []
+        },
+        methods: {
+            // 当用户点击提交按钮时
+            handleBtnClick: function () {
+                // 应用程序将todoValue添加到list数组
+                this.list.push(this.todoValue)
+                // 并将todoValue重置为空字符串
+                this.todoValue = ""
+            },
+            // 当用户单击列表中的项目时
+            // 应用程序将该项目从列表中删除
+            handleItemDelete: function (index) {
+                this.list.splice(index2, 1)
+            }
+        }
+    })
+</script>
+</body>
+</html>

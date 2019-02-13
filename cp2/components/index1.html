@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="todoValue"/>
+    <button @click="submit">提交</button>
+    <ul>
+        <!--
+            <li v-for="item of list">{{item}}</li>
+            -->
+
+        <!-- 这里的 list 代表new Vue.data里的 list -->
+        <!-- :就是 v-bind，将值传递给组件 -->
+        <todo-item v-for="item of list"
+                   :item="item">
+        </todo-item>
+    </ul>
+</div>
+
+<script>
+    // 全局组件
+    Vue.component('TodoItem', {
+        // 通过 :item="item"接收其值
+        props: ["item"],
+        template: '<li>{{item}}</li>'
+    });
+    var app = new Vue({
+        el: '#app',
+        data: {
+            list: []
+        },
+        methods: {
+            submit: function () {
+                this.list.push(this.todoValue)
+                this.todoValue = ''
+            }
+        }
+    })
+</script>
+</body>
+</html>

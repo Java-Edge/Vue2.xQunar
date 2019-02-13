@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的事件处理</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div @click.capture="handleClick">
+        <div @click.capture="handleClickInner">Java Edge</div>
+    </div>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        methods: {
+            handleClick: function (e) {
+                alert("outer");
+            },
+            handleClickInner: function (e) {
+                alert("inner")
+            }
+        }
+    })
+</script>
+</body>
+</html>

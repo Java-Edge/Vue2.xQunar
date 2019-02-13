@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList Jquery</title>
+    <script src='jquery.js'></script>
+</head>
+<body>
+<div>
+    <input id="input" type="text"/>
+    <button id="btn">提交</button>
+    <ul id="list"></ul>
+</div>
+
+<script>
+    // 构造函数
+    function Page() {
+    }
+
+    $.extend(Page.prototype, {
+        init: function () {
+            this.bindEvents()
+        },
+        bindEvents: function () {
+            var btn = $('#btn');
+            // 将点击事件绑定到提交按钮上
+            // 并使用$.proxy函数确保函数在Page对象的上下文中执行
+            btn.on('click', $.proxy(this.handleBtnClick, this))
+        },
+        // 在点击提交按钮时被调用。
+        handleBtnClick: function () {
+            var inputElem = $("#input");
+            // 获取输入框中的值
+            var inputValue = inputElem.val();
+            var ulElem = $("#list");
+            // 将其添加到列表中
+            ulElem.append('<li>' + inputValue + '</li>');
+            // 并清空输入框
+            inputElem.val('');
+        }
+    })
+    // 创建一个名为page的Page对象
+    var page = new Page();
+    // 并调用其init函数
+    page.init();
+</script>
+</body>
+</html>

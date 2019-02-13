@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue中的事件处理</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+<!--    <form action="/abc" @click="handleClick">-->
+<!--        <input type="submit">-->
+<!--    </form>-->
+    <form action="/abc" @click.prevent>
+        <input type="submit">
+    </form>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        methods: {
+            // handleClick: function (e) {
+            //     console.log("触发点击事件🌶")
+            //     e.preventDefault();
+            // }
+        }
+    })
+</script>
+</body>
+</html>

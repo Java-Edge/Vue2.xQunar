@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src='../vue.js'></script>
+</head>
+<body>
+<div id="app">
+    <ul id="example-2">
+<!--        <li v-for="(item, index) in items">-->
+        <li v-for="(item, index) of items">
+            {{ parentMessage }} - {{ index }} - {{ item.message }}
+        </li>
+    </ul>
+</div>
+
+<script>
+    var example2 = new Vue({
+        el: '#example-2',
+        data: {
+            parentMessage: 'Parent',
+            items: [
+                {message: 'Foo'},
+                {message: 'Bar'}
+            ]
+        }
+    })
+</script>
+</body>
+</html>

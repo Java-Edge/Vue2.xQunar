@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+</head>
+<body>
+<div id="root">
+    {{title}}
+</div>
+
+<script>
+    var dom = document.getElementById('root')
+    dom.innerHTML = 'JavaEdge'
+
+    setTimeout(function () {
+        dom.innerHTML = 'bye JavaEdge'
+    }, 2000);
+</script>
+</body>
+</html>
