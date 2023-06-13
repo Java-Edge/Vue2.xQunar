@@ -25,7 +25,7 @@ export default {
   // props: {
   //   list: Array
   // },
-  data() {
+  data () {
     return {
       list: [{
         id: '0001',

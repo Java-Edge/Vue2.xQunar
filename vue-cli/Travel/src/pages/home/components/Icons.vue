@@ -26,8 +26,7 @@ export default {
   data () {
     return {
       swiperOption: {
-        autoplay: false,
-        // loop: true
+        autoplay: false
       },
       list: [{
         id: '0001',
