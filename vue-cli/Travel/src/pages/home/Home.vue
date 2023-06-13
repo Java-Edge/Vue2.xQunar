@@ -1,13 +1,17 @@
 <template>
-  <!--  <template>向外只能暴露一个根标签-->
   <div>
-    JavaEdge 公众号
+    <home-header></home-header>
   </div>
 </template>
 
-<script setup>
+<script>
+import HomeHeader from './components/Header'
 export default {
-  name: 'Home'
+  name: 'Home',
+  // 声明 局部组件，注册到 Home 组件之后，Home的模板里就能使用它了
+  components: {
+    HomeHeader
+  }
 }
 </script>
 
