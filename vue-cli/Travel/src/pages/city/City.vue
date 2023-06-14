@@ -1,6 +1,7 @@
 <template>
   <div>
     <city-header></city-header>
+<!-- city-search组件会通过props，接收cities属性 -->
     <city-search :cities="cities"></city-search>
     <!-- 将有值的 letter 传给 cityList -->
     <city-list
