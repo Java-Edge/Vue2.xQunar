@@ -12,7 +12,7 @@
 <!--        {{ this.city }}-->
         <!-- 通过 main.js 分发出来的，所以能直接接收 -->
 <!--        {{ this.$store.state.city }} 可简写：-->
-        {{this.city}}
+        {{this.doubleCity}}
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
@@ -20,14 +20,18 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {mapGetters, mapState} from "vuex";
 
 export default {
   name: 'HomeHeader',
   computed: {
     // 使用计算属性 ...mapstate(['city']) 来获取名为 city 的状态值
     // mapstate：将状态映射到组件的计算属性
-    ...mapState(['city'])
+    ...mapState(['city']),
+    // 将 doubleCity getter 映射到当前组件
+    // 在模板中使用计算属性中的 doubleCity 值进行展示或其他操作
+    // 将 Vuex 中的一个 getter 映射到当前组件中，方便在模板中使用
+    ...mapGetters(['doubleCity'])
   }
 }
 </script>
