@@ -1,7 +1,7 @@
 <!--在页面上显示一个图标集合，通过Swiper实现分页滑动效果-->
 <template>
   <div class="icons">
-    <!-- 在模板中，使用Swiper组件 并将swiperOption作为参数传入 swiperOption中设置了autoplay为false。-->
+    <!-- 使用Swiper组件 并将swiperOption传入 swiperOption设置autoplay=false 防止自动轮播-->
     <swiper :options="swiperOption">
       <!-- v-for循环遍历page数组中的每个元素，即每一页中的每个图标-->
       <swiper-slide v-for="(page, index) of pages" :key="index">
@@ -20,56 +20,14 @@
 <script>
 export default {
   name: 'HomeIcons',
-  // props: {
-  //   list: Array
-  // },
+  props: {
+    list: Array
+  },
   data () {
     return {
-      swiperOption: {
+      swiperOption : {
         autoplay: false
-      },
-      list: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/2306/cb/cb5d743bdfdc301ea3.water.jpg_600x330_525d681a.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0002',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0003',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0004',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0005',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0006',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0007',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0008',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0009',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
-      }, {
-        id: '0010',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        desc: '景点推荐'
       }
-      ]
     }
   },
   computed: {

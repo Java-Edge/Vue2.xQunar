@@ -22,24 +22,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  // props: {
-  //   list: Array
-  // },
-  data () {
-    return {
-      list: [{
-        id: '0001',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/2306/cb/cb5d743bdfdc301ea3.water.jpg_600x330_525d681a.jpg',
-        title: '海边小吃',
-        desc: '景点推荐'
-      }, {
-        id: '0002',
-        imgUrl: 'https://imgs.qunarzz.com/vs_ceph_b2c_001/2adb694c-06a1-4e35-9117-b4481584c6f9.jpg_304x201_4f2a3178.jpg',
-        title: '海边小吃',
-        desc: '景点推荐'
-      }
-      ]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
