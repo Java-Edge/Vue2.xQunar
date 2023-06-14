@@ -20,6 +20,6 @@ export default new Router({
       name: 'City',
       // 该路径对应的页面内容
       component: City
-    },
+    }
   ]
 })
