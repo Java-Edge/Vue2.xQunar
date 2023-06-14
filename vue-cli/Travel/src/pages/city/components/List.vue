@@ -53,16 +53,25 @@ export default {
     // 接受来自父组件 City.vue 的 letter
     letter: String
   },
+  /**
+   * 使用 Vuex#mapState 将当前城市的状态映射到当前组件的计算属性
+   * 1. 使用 spread 运算符将 mapState 函数返回的对象展开
+   * 2. 展开的对象中，将当前城市的状态映射到 currentCity 计算属性
+   * 3. 当前组件可以通过访问 currentCity 计算属性来获取当前城市的状态
+   */
   computed: {
     ...mapState({
       currentCity: 'city'
     })
   },
   methods: {
+    // 将传递的city参数传递给changeCity方法
+    // 并使用Vue Router将路由推到根路径
     handleCityClick (city) {
       this.changeCity(city)
       this.$router.push('/')
     },
+    // 使用mapMutations将changeCity方法映射到组件的mutations
     ...mapMutations(['changeCity'])
   },
   watch: {
