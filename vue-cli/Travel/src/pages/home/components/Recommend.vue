@@ -12,6 +12,9 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
+<!--      使用Vue Router实现的列表组件，可以快速地渲染出一个带有跳转链接的列表。-->
+<!--      tag属性指定<router-link>组件渲染为一个li元素 -->
+<!--      class属性，用于设置样式-->
       <router-link
         tag="li"
         class="item border-bottom"
