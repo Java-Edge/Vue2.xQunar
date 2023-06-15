@@ -20,6 +20,7 @@ new Vue({
   router,
   // 将存储对象传递给Vue实例，会被分发到每个子组件，以便管理应用程序状态
   store,
+  // 入口组件
   components: { App },
   template: '<App/>'
 })

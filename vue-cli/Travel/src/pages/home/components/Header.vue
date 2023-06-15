@@ -12,7 +12,7 @@
 <!--        {{ this.city }}-->
         <!-- 通过 main.js 分发出来的，所以能直接接收 -->
 <!--        {{ this.$store.state.city }} 可简写：-->
-        {{this.doubleCity}}
+        {{this.city}}
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
