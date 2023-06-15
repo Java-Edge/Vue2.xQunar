@@ -1,5 +1,5 @@
 <!--这段代码是一个Vue组件，用于显示一个带有滚动效果的景点详情页的顶部导航栏。当用户滚动页面时，导航栏的样式会发生变化，从绝对定位的样式变为固定定位的样式。-->
-<!--具体来说，代码中的模板部分包含两个导航栏，一个是绝对定位的，一个是固定定位的。绝对定位的导航栏在页面顶部，当用户向下滚动页面时，会逐渐消失，同时固定定位的导航栏会出现在页面顶部。这个效果是通过监听窗口滚动事件实现的，当滚动距离超过一定值时，会切换导航栏的显示状态。-->
+<!--代码中的模板部分包含两个导航栏，一个是绝对定位的，一个是固定定位的。绝对定位的导航栏在页面顶部，当用户向下滚动页面时，会逐渐消失，同时固定定位的导航栏会出现在页面顶部。这个效果是通过监听窗口滚动事件实现的，当滚动距离超过一定值时，会切换导航栏的显示状态。-->
 <template>
   <div>
     <router-link
@@ -45,7 +45,9 @@ export default {
      *
      */
     handleScroll () {
-      const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+      // 浏览器兼容性问题
+      const top = document.documentElement.scrollTop ||
+        document.body.scrollTop || window.pageYOffset
       // 如果滚动距离超过60px
       if (top > 60) {
         let opacity = top / 140
@@ -60,6 +62,8 @@ export default {
       }
     }
   },
+  // 因为被排除于 keep-alive 之外了
+  // 所以对应的函数也要调整为原生 Vue 自带的
   mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
