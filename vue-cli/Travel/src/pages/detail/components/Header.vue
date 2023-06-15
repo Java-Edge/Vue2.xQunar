@@ -1,3 +1,5 @@
+<!--这段代码是一个Vue组件，用于显示一个带有滚动效果的景点详情页的顶部导航栏。当用户滚动页面时，导航栏的样式会发生变化，从绝对定位的样式变为固定定位的样式。-->
+<!--具体来说，代码中的模板部分包含两个导航栏，一个是绝对定位的，一个是固定定位的。绝对定位的导航栏在页面顶部，当用户向下滚动页面时，会逐渐消失，同时固定定位的导航栏会出现在页面顶部。这个效果是通过监听窗口滚动事件实现的，当滚动距离超过一定值时，会切换导航栏的显示状态。-->
 <template>
   <div>
     <router-link
@@ -32,14 +34,28 @@ export default {
     }
   },
   methods: {
+    /**
+     * 在代码的脚本部分，定义了一个名为DetailHeader的Vue组件
+     * 包含一个名为handleScroll的方法，用于处理滚动事件
+     * 当滚动距离超过一定值时，该方法会更新组件的数据状态
+     * 从而触发导航栏的样式变化
+     *
+     * 当滚动距离超过一定值时，该方法会更新组件的数据状态，从而触发导航栏的样式变化。
+     * 获取当前页面滚动距离，并根据距离计算导航栏的透明度
+     *
+     */
     handleScroll () {
       const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
+      // 如果滚动距离超过60px
       if (top > 60) {
         let opacity = top / 140
+        // 则将导航栏的透明度设置为计算出的值
         opacity = opacity > 1 ? 1 : opacity
         this.opacityStyle = { opacity }
+        // 并隐藏固定在页面顶部的导航栏
         this.showAbs = false
       } else {
+        // 否则，显示固定在页面顶部的导航栏
         this.showAbs = true
       }
     }
@@ -53,6 +69,8 @@ export default {
 }
 </script>
 
+<!--绝对定位的导航栏的样式为半透明的圆角矩形
+固定定位的导航栏的样式为固定在页面顶部的矩形-->
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
   .header-abs
