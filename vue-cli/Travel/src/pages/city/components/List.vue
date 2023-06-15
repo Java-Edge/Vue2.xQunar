@@ -91,6 +91,13 @@ export default {
       }
     }
   },
+  /**
+   * 组件挂载完成后，创建一个Bscroll实例，并将其应用于组件中的wrapper元素上，同时传入一个配置对象，使得该实例可以响应点击事件
+   * 1. 在组件的mounted生命周期钩子函数中，创建了一个名为scroll的实例属性
+   * 2. 使用new操作符创建了一个Bscroll实例，传入了一个对象作为配置参数，其中包含了一个click属性，将其值设置为true
+   * 3. 将该实例应用于组件中的wrapper元素上，通过this.$refs.wrapper获取到该元素的引用
+   * 4. 最终得到一个可响应点击事件的Bscroll实例，可以用于实现滚动效果
+   */
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper, {
       click: true

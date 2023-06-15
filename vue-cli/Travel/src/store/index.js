@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import state from './state'
-import mutations from "./mutations";
+import mutations from './mutations'
 
 Vue.use(Vuex)
 
@@ -10,7 +10,7 @@ export default new Vuex.Store({
   mutations,
   getters: {
     doubleCity (state) {
-      return state.city + ' ' + state.city;
+      return state.city + ' ' + state.city
     }
   }
 })
