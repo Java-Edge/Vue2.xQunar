@@ -15,6 +15,7 @@ import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
 import axios from 'axios'
+import {mapState} from "vuex";
 
 export default {
   name: 'Home',
@@ -34,10 +35,13 @@ export default {
       weekendList: []
     }
   },
+  computed: {
+    ...mapState(['city'])
+  },
   methods: {
     getHomeInfo () {
-      axios.get('/api/index.json')
-        .then(this.getHomeInfoSuccess)
+      axios.get('/api/index.json?city=' + this.city)
+        .then(this.getHomeInfoSuccess);
     },
     getHomeInfoSuccess (res) {
       res = res.data
@@ -51,7 +55,18 @@ export default {
     }
   },
   mounted () {
+    this.lastCity = this.city;
     this.getHomeInfo()
+  },
+  // 当页面重新被显示时执行
+  activated () {
+    //  当页面重新被显示时，判断当前城市是否与上一次保存的城市相同
+    if (this.lastCity !== this.city) {
+      // 如果城市不同，则将当前城市保存到 lastCity 变量中
+      this.lastCity = this.city;
+      // 并调用 getHomeInfo() 方法获取首页信息
+      this.getHomeInfo();
+    }
   }
 }
 </script>
