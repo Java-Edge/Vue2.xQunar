@@ -18,6 +18,7 @@ import axios from 'axios'
 import {mapState} from 'vuex'
 
 export default {
+  // 递归组件用到 取消保活缓存时 Vue调试工具都会用到该属性
   name: 'Home',
   // 声明 局部组件，注册到 Home 组件之后，Home的模板里就能使用它了
   components: {

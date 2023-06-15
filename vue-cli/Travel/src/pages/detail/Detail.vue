@@ -26,6 +26,7 @@ export default {
   },
   data () {
     return {
+      // 后端返回的字段名
       sightName: '',
       bannerImg: '',
       galleryImgs: [],
